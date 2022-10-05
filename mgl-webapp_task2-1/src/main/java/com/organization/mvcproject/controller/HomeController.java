@@ -30,7 +30,7 @@ public class HomeController {
 		return new ModelAndView("result", "submittedReview", reviewImpl);
 	}
 
-	@RequestMapping(value = "/games", method = RequestMethod.GET)
+	@RequestMapping(value = "/game", method = RequestMethod.GET)
 	public ModelAndView game() {
 		return new ModelAndView("games", "command", new GameImpl());
 	}

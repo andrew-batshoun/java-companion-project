@@ -67,11 +67,11 @@
 
                         <div class="row">
                             <div class="form-actions floatRight">
-                                <input type="submit" value="Add" class="btn btn-primary btn-sm">
-                                <button  data-ng-click="ctrl.updateGame()" class="btn btn-primary btn-sm">Update</button>
+                                <input data-ng-ig="!ctrl.game || !ctrl.game.id" type="submit" value="Add" class="btn btn-primary btn-sm">
+                                <button data-ng-if="ctrl.game.id" data-ng-click="ctrl.updateGame()" class="btn btn-primary btn-sm">Update</button>
                                 <button data-ng-if="ctrl.game" data-ng-click="ctrl.resetForm()" type="reset" class="btn btn-primary btn-sm">Clear</button>
                             </div>
-                   <!-- data-ng-if="!ctrl.game || !ctrl.game.id" data-ng-if="ctrl.game.id" -->         
+                   <!--  -->         
                         </div>
                     </form>
                 </div>
