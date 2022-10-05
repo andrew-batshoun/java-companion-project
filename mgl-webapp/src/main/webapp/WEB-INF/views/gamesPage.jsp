@@ -62,6 +62,7 @@
                         <div class="row">
                             <div class="form-actions floatRight">
                                 <input type="submit" value="Add" class="btn btn-primary btn-sm">
+                                <input type="submit" value="Update" class ="btn btn-primary btn-sm">
                             </div>
                         </div>
                     </form>
@@ -83,8 +84,9 @@
                             <tr ng-repeat="currentGame in ctrl.games">
                                 <td><span ng-bind="currentGame.name"></span></td>
                                 <td><span ng-bind="currentGame.genre"></span></td>
-                                <td>
-                                </td>
+                                <td></td>
+                                <td><button>Select</button> </td>
+                                <td><button data-ng-click="ctrl.deleteGame(currentGame)">Delete</button> </td>
                             </tr>
                         </tbody>
                     </table>
