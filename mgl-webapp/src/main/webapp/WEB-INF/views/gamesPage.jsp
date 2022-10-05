@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib tagdir="/WEB-INF/tags" prefix="mgl" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <!DOCTYPE html>
-    <html>
+    <html lang="en">
 
     <head>
+        <meta charset="UTF-8">
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-        <script src="resources/static/js/app.js" /></script>
+        <script src="resources/static/js/app.js" ></script>
         <script src="resources/static/js/service.js"></script>
         <script src="resources/static/js/controller.js"></script>
 
@@ -27,7 +27,13 @@
     </head>
 
     <body ng-app="GameApp" class="ng-cloak">
-        <mgl:myNav/>
+        <nav id="MistLibrary-navbar" class="navbar navbar-expand-md navbar-dark bg-dark">
+            <a class="navbar-brand" href="${pageContext.request.contextPath}">
+			<img src="resources/static/images/MGLlogo.png" width="90" height="60" alt="">
+		</a>
+            <a class="nav-item nav-link" href="games">Games</a>
+            <a class="nav-item nav-link" href="review">Review</a>
+        </nav>
         <br>
         <div class="container" ng-controller="GameController as ctrl">
             <div class="panel panel-default">
@@ -41,9 +47,9 @@
                                 <div class="col-md-7">
                                     <input type="text" ng-model="ctrl.game.name" id="game_name" class="game_name form-control input-sm" placeholder="Enter the name of the new game [required]" required ng-minlength="3" />
                                     <div class="has-error" ng-show="gameForm.$dirty">
-                                        <span ng-show="gameForm.game_name.$error.required">This is a required field</span>
-                                        <span ng-show="gameForm.game_name.$error.minlength">Minimum length required is 3</span>
-                                        <span ng-show="gameForm.game_name.$invalid">This field is invalid </span>
+                                        <span ng-show="gameForm.name.$error.required">This is a required field</span>
+                                        <span ng-show="gameForm.name.$error.minlength">Minimum length required is 3</span>
+                                        <span ng-show="gameForm.name.$invalid">This field is invalid </span>
                                     </div>
                                 </div>
                             </div>
@@ -62,8 +68,10 @@
                         <div class="row">
                             <div class="form-actions floatRight">
                                 <input type="submit" value="Add" class="btn btn-primary btn-sm">
-                                <input type="submit" value="Update" class ="btn btn-primary btn-sm">
+                                <button  data-ng-click="ctrl.updateGame()" class="btn btn-primary btn-sm">Update</button>
+                                <button data-ng-if="ctrl.game" data-ng-click="ctrl.resetForm()" type="reset" class="btn btn-primary btn-sm">Clear</button>
                             </div>
+                   <!-- data-ng-if="!ctrl.game || !ctrl.game.id" data-ng-if="ctrl.game.id" -->         
                         </div>
                     </form>
                 </div>
@@ -85,8 +93,8 @@
                                 <td><span ng-bind="currentGame.name"></span></td>
                                 <td><span ng-bind="currentGame.genre"></span></td>
                                 <td></td>
-                                <td><button>Select</button> </td>
-                                <td><button data-ng-click="ctrl.deleteGame(currentGame)">Delete</button> </td>
+                                <td><button data-ng-click="ctrl.selectGame(currentGame)"  class="btn btn-secondary btn-sm">Select</button></td>
+                                <td><button data-ng-click="ctrl.deleteGame(currentGame)"  class="btn btn-secondary btn-sm">Delete</button></td>
                             </tr>
                         </tbody>
                     </table>
